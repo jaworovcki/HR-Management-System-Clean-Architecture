@@ -2,7 +2,7 @@
 
 namespace HR.Leave.Management.Application.Contracts.Persistence
 {
-    public interface ILeaveRequestRepository : IGenericRepository<LeaveType>
+    public interface ILeaveRequestRepository : IGenericRepository<LeaveRequest>
     {
 
     }
