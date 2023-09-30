@@ -4,14 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HR.Leave.Management.Application.Features.LeaveType.Queries.GetAllLeaveTypes
+namespace HR.Leave.Management.Application.Features.LeaveType.Queries.GetAllLeaveTypeDetais
 {
-	public class LeaveTypeDto
+
+	public class LeaveTypeDetailsDto
 	{
 		public int Id { get; set; }
 
 		public string Name { get; set; } = string.Empty;
 
 		public int DefaultDays { get; set; }
+
+		public DateTime? DateCreated { get; set; }
+
+		public DateTime? DateUpdated { get; set; }
 	}
 }
