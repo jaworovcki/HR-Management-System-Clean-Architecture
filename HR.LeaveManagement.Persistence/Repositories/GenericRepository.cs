@@ -1,4 +1,5 @@
 ﻿using HR.Leave.Management.Application.Contracts.Persistence;
+using HR.Leave.Management.Domain.Common;
 using HR.LeaveManagement.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.Persistence.Repositories
 {
-	public class GenericRepository<T> : IGenericRepository<T> where T : class
+	public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 	{
 		protected readonly HrDataContext _context;
 
@@ -45,7 +46,8 @@ namespace HR.LeaveManagement.Persistence.Repositories
 		public async Task<T> GetByIdAsync(int id)
 		{
 			var entity = await _context.Set<T>()
-				.FindAsync(id);
+				.AsNoTracking()
+				.FirstOrDefaultAsync(q => q.Id.Equals(id));
 
 			return entity;
 		}

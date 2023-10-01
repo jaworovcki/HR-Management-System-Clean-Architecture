@@ -20,8 +20,6 @@ namespace HR.Leave.Management.Domain
 
         public bool Cancelled { get; set; }
 
-		public string RequestingEmpployeeId { get; set; } = string.Empty;
+		public string RequestingEmployeeId { get; set; } = string.Empty;
     }
-
-
 }
