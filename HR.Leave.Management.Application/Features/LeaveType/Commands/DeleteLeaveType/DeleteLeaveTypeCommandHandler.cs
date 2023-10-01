@@ -24,7 +24,7 @@ namespace HR.Leave.Management.Application.Features.LeaveType.Commands.DeleteLeav
 			if (leaveTypeDomain is null)
 				throw new NotFoundException(nameof(leaveTypeDomain), request.Id);
 
-			await _leaveTypeRepository.DeleteAsync(leaveTypeDomain.Id);
+			await _leaveTypeRepository.DeleteAsync(leaveTypeDomain);
 
 			return Unit.Value;
 		}
