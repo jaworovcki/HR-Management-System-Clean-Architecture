@@ -6,6 +6,8 @@ namespace HR.Leave.Management.Application.Contracts.Persistence
     {
         Task<bool> IsLeaveTypeUnique(string name);
 
-        Task<bool> IsLeaveTypeExists(int id);
+        Task<bool> IsLeaveTypeUnique(string name, int id);
+
+		Task<bool> IsLeaveTypeExists(int id);
     }
 }

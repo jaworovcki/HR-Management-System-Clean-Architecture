@@ -54,6 +54,10 @@ namespace HR.LeaveManagement.Persistence.Repositories
 
 		public async Task UpdateAsync(T entity)
 		{
+			var entityToUpdate = await GetByIdAsync(entity.Id);
+
+			entity.DateCreated = entityToUpdate.DateCreated;
+
 			_context.Entry(entity).State = EntityState.Modified;
 
 			await _context.SaveChangesAsync();

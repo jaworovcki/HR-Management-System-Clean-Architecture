@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace HR.Leave.Management.Application.Features.LeaveType.Queries.GetAllLeaveTypeDetais
 {
-
 	public class LeaveTypeDetailsDto
 	{
-		public int Id { get; set; }
-
 		public string Name { get; set; } = string.Empty;
 
 		public int DefaultDays { get; set; }
