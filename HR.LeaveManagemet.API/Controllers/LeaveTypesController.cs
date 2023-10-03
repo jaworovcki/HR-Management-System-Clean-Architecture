@@ -31,7 +31,7 @@ namespace HR.LeaveManagemet.API.Controllers
 		}
 
 		// GET api/<LeaveTypesController>/5
-		[HttpGet("{id}", Name = nameof(GetById))]
+		[HttpGet, Route("{id}")]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LeaveTypeDetailsDto))]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<ActionResult<LeaveTypeDetailsDto>> GetById(int id)
@@ -66,7 +66,7 @@ namespace HR.LeaveManagemet.API.Controllers
 		}
 
 		// PUT api/<LeaveTypesController>/5
-		[HttpPut()]
+		[HttpPut]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> Put([FromBody] UpdateLeaveTypeCommand request)

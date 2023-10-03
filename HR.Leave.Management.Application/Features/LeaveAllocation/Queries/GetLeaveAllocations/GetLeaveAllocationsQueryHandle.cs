@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace HR.Leave.Management.Application.Features.LeaveAllocation.Queries.GetLeaveAllocations
 {
-	public class GetLeaveAllocationQueryHandle : IRequestHandler<GetLeaveAllocationQuery,
+	public class GetLeaveAllocationsQueryHandle : IRequestHandler<GetLeaveAllocationsQuery,
 		IEnumerable<LeaveAllocationDto>>
 	{
 		private readonly IMapper _mapper;
 		private readonly ILeaveAllocationRepository _leaveAllocationRepository;
 
-		public GetLeaveAllocationQueryHandle(IMapper mapper, 
+		public GetLeaveAllocationsQueryHandle(IMapper mapper, 
 			ILeaveAllocationRepository leaveAllocationRepository)
         {
 			_mapper = mapper;
 			_leaveAllocationRepository = leaveAllocationRepository;
 		}
-        public async Task<IEnumerable<LeaveAllocationDto>> Handle(GetLeaveAllocationQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<LeaveAllocationDto>> Handle(GetLeaveAllocationsQuery request, CancellationToken cancellationToken)
 		{
 			var leaveAllocations = await _leaveAllocationRepository.GetLeaveAllocationsWithDetails();
 

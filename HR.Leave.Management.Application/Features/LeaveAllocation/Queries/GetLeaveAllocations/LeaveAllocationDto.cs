@@ -11,7 +11,7 @@ namespace HR.Leave.Management.Application.Features.LeaveAllocation.Queries.GetLe
 	{
         public int Id { get; set; }
 
-        public int NumeberOfDays { get; set; }
+        public int NumberOfDays { get; set; }
 
 		public LeaveTypeDto? LeaveType { get; set; }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HR.Leave.Management.Application.Features.LeaveAllocation.Queries.GetLeaveAllocations
 {
-	public class GetLeaveAllocationQuery : IRequest<IEnumerable<LeaveAllocationDto>>
+	public class GetLeaveAllocationsQuery : IRequest<IEnumerable<LeaveAllocationDto>>
 	{
 
 	}

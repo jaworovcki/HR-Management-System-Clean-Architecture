@@ -48,5 +48,10 @@ namespace HR.LeaveManagement.Persistence.Repositories
 		public Task<bool> IsAllocationExists(int leaveTypeId, string userId, int period) 
 			=> _context.LeaveAllocations
 				.AnyAsync(x => x.LeaveTypeId.Equals(leaveTypeId) && x.EmployeeId.Equals(userId) && x.Period.Equals(period));
+
+		public Task<bool> IsAllocationExists(int id)
+		{
+			return _context.LeaveAllocations.AnyAsync(x => x.Id.Equals(id));
+		}
 	}
 }
