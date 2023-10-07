@@ -41,15 +41,8 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<ActionResult<LeaveAllocationDetailsDto>> GetById(int id)
 		{
-			try
-			{
-				var leaveAllocationDetailsDto = await _mediator.Send(new GetLeaveAllocationDetaisQuery { Id = id });
-				return Ok(leaveAllocationDetailsDto);
-			}
-			catch (NotFoundException)
-			{
-				return NotFound();
-			}
+			var leaveAllocationDetailsDto = await _mediator.Send(new GetLeaveAllocationDetaisQuery { Id = id });
+			return Ok(leaveAllocationDetailsDto);
 		}
 
 		// POST api/<LeaveAllocationController>
@@ -58,16 +51,9 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<ActionResult<LeaveAllocationDto>> Post([FromBody] CreateLeaveAllocationCommand request)
 		{
-			try
-			{
-				var leaveAllocation = await _mediator.Send(request);
+			var leaveAllocation = await _mediator.Send(request);
 
-				return CreatedAtAction(nameof(GetById), new { Id = leaveAllocation.Id }, leaveAllocation);
-			}
-			catch (BadRequestException)
-			{
-				return BadRequest();
-			}
+			return CreatedAtAction(nameof(GetById), new { Id = leaveAllocation.Id }, leaveAllocation);
 		}
 
 		// PUT api/<LeaveTypesController>/5
@@ -76,15 +62,8 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> Put([FromBody] UpdateLeaveAllocationCommand request)
 		{
-			try
-			{
-				await _mediator.Send(request);
-				return NoContent();
-			}
-			catch (BadRequestException)
-			{
-				return BadRequest();
-			}
+			await _mediator.Send(request);
+			return NoContent();
 		}
 
 		// DELETE api/<LeaveTypesController>/5
@@ -93,15 +72,8 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> Delete(int id)
 		{
-			try
-			{
-				await _mediator.Send(new DeleteLeaveAllocationCommand { Id = id });
-				return NoContent();
-			}
-			catch (NotFoundException)
-			{
-				return NotFound();
-			}
+			await _mediator.Send(new DeleteLeaveAllocationCommand { Id = id });
+			return NoContent();
 		}
 	}
 }

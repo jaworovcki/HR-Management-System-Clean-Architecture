@@ -9,6 +9,5 @@ namespace HR.Leave.Management.Application.Contracts.Persistence
         Task<IEnumerable<LeaveRequest>> GetLeaveRequestsWithDetailsAsync();
 
         Task<IEnumerable<LeaveRequest>> GetLeaveRequestsWithDetaisAsync(string userId);
-		Task GetLeaveRequestWithDetails(int id);
 	}
 }

@@ -11,6 +11,6 @@ namespace HR.Leave.Management.Application.Features.LeaveRequest.Commands.CreateL
 {
 	public class CreateLeaveRequestCommand : BaseLeaveRequest, IRequest<LeaveRequestDto>
 	{
-		public string RequestComments { get; set; } = string.Empty;
+		public string RequestComment { get; set; } = string.Empty;
     }
 }

@@ -9,6 +9,8 @@ namespace HR.Leave.Management.Application.Features.LeaveRequest.Queries.GetLeave
 {
 	public class LeaveRequestDto
 	{
+		public int Id { get; set; }
+
 		public string RequestingEmployeeId { get; set; } = string.Empty;
 
 		public LeaveTypeDto? LeaveType { get; set; }

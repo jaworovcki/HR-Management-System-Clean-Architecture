@@ -33,21 +33,14 @@ namespace HR.LeaveManagemet.API.Controllers
 		}
 
 		// GET api/<LeaveRequestController>/5
-		[HttpGet("{id}")]
+		[HttpGet, Route("{id}")]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LeaveRequestDetailsDto))]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<ActionResult<LeaveRequestDetailsDto>> GetById([FromRoute] int id)
 		{
-			try
-			{
-				var leaveRequestDetailsDto = await _mediator.Send(new GetLeaveRequestDetailsQuery { Id = id });
+			var leaveRequestDetailsDto = await _mediator.Send(new GetLeaveRequestDetailsQuery { Id = id });
 
-				return Ok(leaveRequestDetailsDto);
-			}
-			catch (NotFoundException)
-			{
-				return NotFound();
-			}
+			return Ok(leaveRequestDetailsDto);
 		}
 
 		// POST api/<LeaveRequestController>
@@ -56,16 +49,9 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<ActionResult<LeaveRequestDto>> Post([FromBody] CreateLeaveRequestCommand request)
 		{
-			try
-			{
-				var leaveRequestDto = _mediator.Send(request);
+			var leaveRequestDto = await _mediator.Send(request);
 
-				return CreatedAtAction(nameof(GetById), new { Id = leaveRequestDto.Id }, leaveRequestDto);
-			}
-			catch (BadRequestException)
-			{
-				return BadRequest();
-			}
+			return CreatedAtAction(nameof(GetById), new { Id = leaveRequestDto.Id }, leaveRequestDto);
 		}
 
 		// PUT api/<LeaveRequestController>/5
@@ -74,16 +60,9 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> Put([FromBody] UpdateLeaveRequestCommand request)
 		{
-			try
-			{
-				await _mediator.Send(request);
+			await _mediator.Send(request);
 
-				return NoContent();
-			}
-			catch (BadRequestException)
-			{
-				return BadRequest();
-			}
+			return NoContent();
 		}
 
 		// DELETE api/<LeaveRequestController>/5
@@ -92,16 +71,9 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> Delete(int id)
 		{
-			try
-			{
-				await _mediator.Send(new DeleteLeaveRequestCommand { Id = id });
+			await _mediator.Send(new DeleteLeaveRequestCommand { Id = id });
 
-				return NoContent();
-			}
-			catch (NotFoundException)
-			{
-				return NotFound();
-			}
+			return NoContent();
 		}
 
 		[HttpPut("cancel-request")]
@@ -109,16 +81,9 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> CancelRequest([FromRoute] CancelLeaveRequestCommand request)
 		{
-			try
-			{
-				await _mediator.Send(request);
+			await _mediator.Send(request);
 
-				return NoContent();
-			}
-			catch (NotFoundException)
-			{
-				return NotFound();
-			}
+			return NoContent();
 		}
 
 		[HttpPut("approve-request")]
@@ -126,16 +91,10 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> UpdateRequestApproval([FromBody] ChangeLeaveRequestApprovalCommand request)
 		{
-			try
-			{
-				await _mediator.Send(request);
 
-				return NoContent();
-			}
-			catch (NotFoundException)
-			{
-				return NotFound();
-			}
+			await _mediator.Send(request);
+
+			return NoContent();
 		}
 	}
 }

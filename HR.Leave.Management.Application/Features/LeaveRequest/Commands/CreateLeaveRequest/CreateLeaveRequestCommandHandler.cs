@@ -50,6 +50,8 @@ namespace HR.Leave.Management.Application.Features.LeaveRequest.Commands.CreateL
 
 			var leaveRequestEntity = _mapper.Map<Domain.LeaveRequest>(request);
 
+			Console.WriteLine($"Leave request entity comment: {leaveRequestEntity.RequestComment}");
+
 			await _leaveRequestRepository.CreateAsync(leaveRequestEntity);
 
 			_appLogger.LogInformation($"{nameof(LeaveRequest)} with Id " +

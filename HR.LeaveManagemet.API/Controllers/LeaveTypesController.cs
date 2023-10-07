@@ -36,15 +36,8 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<ActionResult<LeaveTypeDetailsDto>> GetById(int id)
 		{
-			try
-			{
-				var leaveTypeDetails = await _mediator.Send(new GetLeaveTypeDetailsQuery(id));
-				return Ok(leaveTypeDetails);
-			}
-			catch (NotFoundException)
-			{
-				return NotFound();
-			}
+			var leaveTypeDetails = await _mediator.Send(new GetLeaveTypeDetailsQuery(id));
+			return Ok(leaveTypeDetails);
 		}
 
 		// POST api/<LeaveTypesController>
@@ -53,16 +46,9 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<ActionResult<LeaveTypeDto>> Post([FromBody] CreateLeaveTypeCommand request)
 		{
-			try
-			{
-				var leaveType = await _mediator.Send(request);
+			var leaveType = await _mediator.Send(request);
 
-				return CreatedAtAction(nameof(GetById), new { Id = leaveType.Id }, leaveType);
-			}
-			catch (BadRequestException)
-			{
-				return BadRequest();
-			}
+			return CreatedAtAction(nameof(GetById), new { Id = leaveType.Id }, leaveType);
 		}
 
 		// PUT api/<LeaveTypesController>/5
@@ -71,15 +57,8 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> Put([FromBody] UpdateLeaveTypeCommand request)
 		{
-			try
-			{
-				await _mediator.Send(request);
-				return NoContent();
-			}
-			catch(BadRequestException)
-			{
-				return BadRequest();
-			}
+			await _mediator.Send(request);
+			return NoContent();
 		}
 
 		// DELETE api/<LeaveTypesController>/5
@@ -88,15 +67,8 @@ namespace HR.LeaveManagemet.API.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> Delete(int id)
 		{
-			try
-			{
-				await _mediator.Send(new DeleteLeaveTypeCommand(id));
-				return NoContent();
-			}
-			catch (NotFoundException)
-			{
-				return NotFound();
-			}
+			await _mediator.Send(new DeleteLeaveTypeCommand(id));
+			return NoContent();
 		}
 	}
 }
