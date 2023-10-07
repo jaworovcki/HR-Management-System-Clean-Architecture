@@ -51,7 +51,7 @@ namespace HR.LeaveManagemet.API.Controllers
 		[HttpPost]
 		[ProducesResponseType(StatusCodes.Status201Created, Type = typeof(LeaveTypeDto))]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
-		public async Task<ActionResult<LeaveTypeDto>> Create([FromBody] CreateLeaveTypeCommand request)
+		public async Task<ActionResult<LeaveTypeDto>> Post([FromBody] CreateLeaveTypeCommand request)
 		{
 			try
 			{

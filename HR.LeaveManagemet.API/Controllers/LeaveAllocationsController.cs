@@ -56,7 +56,7 @@ namespace HR.LeaveManagemet.API.Controllers
 		[HttpPost]
 		[ProducesResponseType(StatusCodes.Status201Created, Type = typeof(LeaveAllocationDto))]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
-		public async Task<ActionResult<LeaveAllocationDto>> Create([FromBody] CreateLeaveAllocationCommand request)
+		public async Task<ActionResult<LeaveAllocationDto>> Post([FromBody] CreateLeaveAllocationCommand request)
 		{
 			try
 			{

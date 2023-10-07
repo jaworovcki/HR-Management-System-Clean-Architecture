@@ -20,7 +20,7 @@ namespace HR.LeaveManagement.Infrastructure.EmailService
 
 		public EmailSettings Options { get; }
 
-		public async Task<bool> SendEmail(EmailMessage email)
+		public async Task<bool> SendEmailAsync(EmailMessage email)
 		{
 			var client = new SendGridClient(Options.ApiKey);
 			var to = new EmailAddress(email.To);

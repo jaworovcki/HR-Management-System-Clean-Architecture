@@ -14,7 +14,7 @@ namespace HR.Leave.Management.Domain
 
 		public DateTime DateRequested { get; set; }
 
-        public string? RequstComment { get; set; }
+        public string? RequestComment { get; set; }
 
         public bool? Approved { get; set; }
 
